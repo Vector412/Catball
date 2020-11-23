@@ -1,4 +1,5 @@
-﻿public class Player : Singleton<Player>
+﻿
+public class PlayerMovement : Singleton<PlayerMovement>
 {
 	private static int currentCoins;
 	public delegate void OnCoinsChanged(int coins);
