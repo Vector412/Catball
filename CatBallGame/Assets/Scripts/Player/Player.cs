@@ -1,7 +1,7 @@
 ﻿
-public class PlayerMovement : Singleton<PlayerMovement>
+public class Player : Singleton<Player>
 {
-	private static int currentCoins;
+	public int currentCoins;
 	public delegate void OnCoinsChanged(int coins);
 	public event OnCoinsChanged onCoinTake;
 	public void AddCoin()

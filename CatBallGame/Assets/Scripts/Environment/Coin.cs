@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			PlayerMovement.Instance.AddCoin();
+			Player.Instance.AddCoin();
 			Destroy(this.gameObject);
 		}	
 	}
