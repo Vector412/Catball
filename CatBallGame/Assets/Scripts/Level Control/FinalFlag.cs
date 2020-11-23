@@ -9,4 +9,6 @@ public class FinalFlag : MonoBehaviour
 			FinishLevel();
 	}
 	private void FinishLevel() => endLevelScreen.SetActive(true);
+
+	// Add method to destroy level prefab
 }

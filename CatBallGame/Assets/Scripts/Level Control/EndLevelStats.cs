@@ -3,12 +3,14 @@ using TMPro;
 
 public class EndLevelStats : MonoBehaviour
 {
-	[SerializeField] TextMeshProUGUI scoreText;
+	[SerializeField] TextMeshProUGUI coinsText;
 	[SerializeField] TextMeshProUGUI bonusText;
+	[SerializeField] TextMeshProUGUI finalScoreText;
 
 	private void OnEnable()
 	{
-		scoreText.text = "Final score: " + Player.Instance.currentCoins;
-		bonusText.text = "Bonus: *Логика расчета из оставшегося запаса чернил*";
+		coinsText.text = "Coins: " + Player.Instance.currentCoins;
+		bonusText.text = "Bonus: Логика расчета из оставшегося запаса чернил " + 2;
+		finalScoreText.text = "Final score: " + ((Player.Instance.currentCoins * 2) * 1.75);
 	}
 }
