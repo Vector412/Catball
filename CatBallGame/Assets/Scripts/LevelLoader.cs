@@ -1,41 +1,36 @@
 ﻿using UnityEngine;
 
+
 public class LevelLoader : MonoBehaviour
 {
 	[SerializeField] LevelList levels;
 	private static int openedLevel;
-	private GameObject level;
-
-	private void Awake()
-	{
-		DontDestroyOnLoad(gameObject);
-	}
 	private void Start()
 	{
+		Time.timeScale = 1f;
+		DontDestroyOnLoad(gameObject);
+		Debug.Log(PlayerPrefs.GetInt("currentOpenedLevel"));
+		Debug.Log(openedLevel);
+		
 		if (PlayerPrefs.GetInt("currentOpenedLevel") == 0)
 		{
 			PlayerPrefs.SetInt("currentOpenedLevel", 0);
-			level = levels.levelPrefabs[PlayerPrefs.GetInt("currentOpenedLevel")];
-			CreateLevel(level);
+			CreateLevel();
 		}
 		else
 		{
 			openedLevel = PlayerPrefs.GetInt("currentOpenedLevel");
-			level = levels.levelPrefabs[PlayerPrefs.GetInt("currentOpenedLevel")];
-			CreateLevel(level);
+			CreateLevel();
 		}
 	}
 	public void LoadNextLevel()
 	{
-		Destroy(level);
-		SaveProgress();
-		level = levels.levelPrefabs[PlayerPrefs.GetInt("currentOpenedLevel")];
-		CreateLevel(level);
+		CreateLevel();
 	}
-	public void SaveProgress() => PlayerPrefs.SetInt("currentOpenedLevel", openedLevel++);
 	public void DeleteSaves() => PlayerPrefs.DeleteAll();
-	public void CreateLevel(GameObject levelToCreate)
+	public void CreateLevel()
 	{
-		Instantiate(levelToCreate);
+		PlayerPrefs.SetInt("currentOpenedLevel", openedLevel++);
+		Instantiate(levels.levelPrefabs[openedLevel]);
 	}
 }
